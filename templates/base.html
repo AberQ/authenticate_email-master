@@ -49,8 +49,8 @@
                 <span class="navbar-text me-2">User: <strong>{{ user.username }}</strong></span>
                 <a href="{% url 'log_out' %}" class="btn btn-danger">Logout</a>
             {% else %}
-                <!-- Кнопка регистрации для незарегистрированных пользователей -->
-                <span class="navbar-text me-2 text-danger fw-bold" style="font-size: 1.2rem;">Not authorized</span>
+                <!-- Кнопка для незарегистрированных пользователей -->
+                <a href="{% url 'login' %}" class="btn btn-danger me-2">Not authorized</a>
                 <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
             {% endif %}
         </div>
