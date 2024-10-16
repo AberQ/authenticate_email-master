@@ -21,8 +21,11 @@
             background-color: #ffffff;
             border: 1px solid #dee2e6;
         }
-        .register-btn {
+        .ml-auto {
             margin-left: auto;
+        }
+        .nav-item .btn {
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -39,24 +42,23 @@
                 <a class="nav-link" href="{% url 'state_list' %}">States</a>
             </li>
         </ul>
-        {% if not user.is_authenticated %}
-        <!-- Кнопка регистрации для незарегистрированных пользователей -->
-        <a href="{% url 'register' %}" class="btn btn-primary register-btn">Register</a>
-        {% endif %}
+        
+        <div class="ml-auto d-flex align-items-center">
+            {% if user.is_authenticated %}
+                <!-- Имя пользователя и кнопка выхода -->
+                <span class="navbar-text me-2">User: <strong>{{ user.username }}</strong></span>
+                <a href="{% url 'log_out' %}" class="btn btn-danger">Logout</a>
+            {% else %}
+                <!-- Кнопка регистрации для незарегистрированных пользователей -->
+                <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+            {% endif %}
+        </div>
     </div>
 </nav>
 
 <div class="welcome-message">
     <p>User: <strong>{{ user }}</strong></p>
 </div>
-
-<ul class="list-group">
-    {% if user.is_authenticated %}
-    <li class="list-group-item">
-        <a href="{% url 'log_out' %}" class="btn btn-danger">Logout</a>
-    </li>
-    {% endif %}
-</ul>
 
 {% block content %}
 {% endblock %}
