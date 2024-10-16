@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Articles</h2>
+  
+  {% if states %}
+    <div class="row">
+      {% for state in states %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title">{{ state.title }}</h3>
+              <p class="card-text">{{ state.content|truncatewords:30 }}</p>
+              <p class="card-text"><small class="text-muted">Published on: {{ state.created_at }}</small></p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-warning" role="alert">
+      No articles available.
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

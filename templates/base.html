@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>User Authentication</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .welcome-message {
+            margin: 20px 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .list-group-item {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+        }
+        .register-btn {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body class="container">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home' %}">My Django App</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'state_list' %}">States</a>
+            </li>
+        </ul>
+        {% if not user.is_authenticated %}
+        <!-- Кнопка регистрации для незарегистрированных пользователей -->
+        <a href="{% url 'register' %}" class="btn btn-primary register-btn">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="welcome-message">
+    <p>User: <strong>{{ user }}</strong></p>
+</div>
+
+<ul class="list-group">
+    {% if user.is_authenticated %}
+    <li class="list-group-item">
+        <a href="{% url 'log_out' %}" class="btn btn-danger">Logout</a>
+    </li>
+    {% endif %}
+</ul>
+
+{% block content %}
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-j2j8tq4R+lcPg4v6y+fZWfViE1d6tVOVtn3Swg3C6tHRsU5ebKp6D9EmgM+F0kft" crossorigin="anonymous"></script>
+</body>
+</html>

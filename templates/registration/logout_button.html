@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Welcome to Our Website!</h1>
+    <p class="lead text-center mb-5" style="animation: fadeIn 2s;">
+        Discover a world of knowledge and insight with our extensive collection of articles. 
+        Our platform offers a diverse range of topics, ensuring there’s something for everyone. 
+        Join us in exploring new ideas and expanding your horizons!
+    </p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Engaging Content</h5>
+                    <p class="card-text">
+                        Our articles are curated to be both informative and engaging, making learning a pleasure. 
+                        Whether you're a casual reader or a knowledge seeker, you'll find value in our content.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">User-Friendly Experience</h5>
+                    <p class="card-text">
+                        Our website is designed with you in mind. 
+                        Easy navigation and a clean interface allow you to find and read articles with ease.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mb-5">
+        <a href="{% url 'state_list' %}" class="btn btn-primary btn-lg animated-button">Explore Articles</a>
+    </div>
+</div>
+
+<style>
+    /* Animation styles */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .animated-button {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .animated-button:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300%;
+        height: 300%;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.6s ease;
+    }
+
+    .animated-button:hover:before {
+        transform: translate(-50%, -50%) scale(1);
+    }
+</style>
+{% endblock %}
