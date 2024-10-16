@@ -50,6 +50,7 @@
                 <a href="{% url 'log_out' %}" class="btn btn-danger">Logout</a>
             {% else %}
                 <!-- Кнопка регистрации для незарегистрированных пользователей -->
+                <span class="navbar-text me-2 text-danger fw-bold" style="font-size: 1.2rem;">Not authorized</span>
                 <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
             {% endif %}
         </div>
@@ -57,7 +58,8 @@
 </nav>
 
 <div class="welcome-message">
-    <p>User: <strong>{{ user }}</strong></p>
+    <!-- Удалено отображение пользователя -->
+    <!-- <p>User: <strong>{{ user }}</strong></p> -->
 </div>
 
 {% block content %}
